@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/persons/persons",
+    "pages/personDetail/personDetail",
+    "pages/history/history",
+    "pages/settings/settings",
+    "pages/guide/guide",
+    "pages/vip/vip",
+    "pages/privacy/privacy",
+    "pages/agreement/agreement"
+  ],
+  "window": {
+    "navigationBarTitleText": "家校沟通助手",
+    "navigationBarBackgroundColor": "#0A0E27",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0A0E27"
+  },
+  "tabBar": {
+    "color": "#B8BCE0",
+    "selectedColor": "#667EEA",
+    "backgroundColor": "#0F1535",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "分析"
+      },
+      {
+        "pagePath": "pages/persons/persons",
+        "text": "人员"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史"
+      },
+      {
+        "pagePath": "pages/vip/vip",
+        "text": "会员"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "设置"
+      }
+    ]
+  }
+}

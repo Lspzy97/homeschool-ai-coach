@@ -1,0 +1,46 @@
+{
+  "name": "家校AI沟通教练",
+  "appid": "__UNI__AICHAT",
+  "description": "家校AI沟通教练 - 分析聊天属性，优化沟通话术",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "app-plus": {
+    "usingComponents": true,
+    "splashscreen": {
+      "alwaysShowBeforeRender": true,
+      "waiting": true,
+      "autoclose": true,
+      "delay": 0
+    },
+    "modules": {},
+    "distribute": {
+      "android": {
+        "permissions": [
+          "<uses-permission android:name=\"android.permission.INTERNET\"/>"
+        ]
+      },
+      "ios": {}
+    }
+  },
+  "quickapp": {},
+  "mp-weixin": {
+    "appid": "wx4527584a4099523f",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": true
+    },
+    "usingComponents": true
+  },
+  "h5": {
+    "router": {
+      "mode": "hash"
+    },
+    "devServer": {
+      "port": 8080,
+      "disableHostCheck": true
+    }
+  }
+}

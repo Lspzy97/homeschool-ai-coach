@@ -1,0 +1,172 @@
+[
+  {
+    "id": "p_1779383596740",
+    "name": "兮姐",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守直女",
+    "confidence": 20,
+    "isStable": false,
+    "analysisCount": 1,
+    "createdAt": "2026-05-21T17:13:16.740Z",
+    "lastAnalysis": {
+      "qingzhiType": "守直女",
+      "mbtiType": "INFJ",
+      "satirStance": "超理智型（防御性）",
+      "createdAt": "2026-05-21T17:13:16.740Z"
+    }
+  },
+  {
+    "id": "p_1779383639496",
+    "name": "贝贝",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守直女",
+    "confidence": 60,
+    "isStable": false,
+    "analysisCount": 9,
+    "createdAt": "2026-05-21T17:13:59.496Z",
+    "lastAnalysis": {
+      "qingzhiType": "守直女",
+      "mbtiType": "INFP",
+      "satirStance": "指责型（转向自我）",
+      "createdAt": "2026-05-22T09:58:05.632Z"
+    }
+  },
+  {
+    "id": "p_1779383744863",
+    "name": "一千零一页",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守直女",
+    "confidence": 20,
+    "isStable": false,
+    "analysisCount": 1,
+    "createdAt": "2026-05-21T17:15:44.863Z",
+    "lastAnalysis": {
+      "qingzhiType": "守直女",
+      "mbtiType": "ISFJ",
+      "satirStance": "指责型",
+      "createdAt": "2026-05-21T17:15:44.863Z"
+    }
+  },
+  {
+    "id": "p_1779440756671",
+    "name": "泡芙",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守情女",
+    "confidence": 40,
+    "isStable": false,
+    "analysisCount": 2,
+    "createdAt": "2026-05-22T09:05:56.671Z",
+    "lastAnalysis": {
+      "qingzhiType": "守情女",
+      "mbtiType": "ISFP",
+      "satirStance": "一致型（偏讨好型边缘）",
+      "createdAt": "2026-05-23T16:55:19.865Z"
+    }
+  },
+  {
+    "id": "p_1779441154273",
+    "name": "鸦葱",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守情女",
+    "confidence": 20,
+    "isStable": false,
+    "analysisCount": 2,
+    "createdAt": "2026-05-22T09:12:34.273Z",
+    "lastAnalysis": {
+      "qingzhiType": "守情女",
+      "mbtiType": "ISFJ",
+      "satirStance": "打岔型（轻度）",
+      "createdAt": "2026-05-22T11:41:56.867Z"
+    }
+  },
+  {
+    "id": "p_1779442270321",
+    "name": "桃喜",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守直女",
+    "confidence": 20,
+    "isStable": false,
+    "analysisCount": 1,
+    "createdAt": "2026-05-22T09:31:10.321Z",
+    "lastAnalysis": {
+      "qingzhiType": "守直女",
+      "mbtiType": "ISFP",
+      "satirStance": "指责型",
+      "createdAt": "2026-05-22T09:31:10.321Z"
+    }
+  },
+  {
+    "id": "p_1779448586155",
+    "name": "CF",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守直女",
+    "confidence": 20,
+    "isStable": false,
+    "analysisCount": 2,
+    "createdAt": "2026-05-22T11:16:26.155Z",
+    "lastAnalysis": {
+      "qingzhiType": "守直女",
+      "mbtiType": "INFP",
+      "satirStance": "打岔型",
+      "createdAt": "2026-05-22T11:25:17.295Z"
+    }
+  },
+  {
+    "id": "p_1779454912715",
+    "name": "陈柯蓉",
+    "gender": "女",
+    "recipientType": "家长",
+    "currentType": "守直女",
+    "confidence": 40,
+    "isStable": false,
+    "analysisCount": 3,
+    "createdAt": "2026-05-22T13:01:52.715Z",
+    "lastAnalysis": {
+      "qingzhiType": "守直女",
+      "mbtiType": "ISFP",
+      "satirStance": "指责型",
+      "createdAt": "2026-05-22T13:18:12.552Z"
+    }
+  },
+  {
+    "id": "p_1779456360800",
+    "name": "六日老师",
+    "gender": "女",
+    "recipientType": "老师",
+    "currentType": "攻情女",
+    "confidence": 50,
+    "isStable": false,
+    "analysisCount": 4,
+    "createdAt": "2026-05-22T13:26:00.800Z",
+    "lastAnalysis": {
+      "qingzhiType": "攻情女",
+      "mbtiType": "INTJ",
+      "satirStance": "一致型",
+      "createdAt": "2026-05-22T14:02:48.816Z"
+    }
+  },
+  {
+    "id": "p_1779545313560",
+    "name": "伊敏",
+    "gender": "女",
+    "recipientType": "同学",
+    "currentType": "守情女",
+    "confidence": 40,
+    "isStable": false,
+    "analysisCount": 3,
+    "createdAt": "2026-05-23T14:08:33.560Z",
+    "lastAnalysis": {
+      "qingzhiType": "守情女",
+      "mbtiType": "ISFJ",
+      "satirStance": "讨好型（轻度）",
+      "createdAt": "2026-05-23T14:17:16.244Z"
+    }
+  }
+]

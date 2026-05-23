@@ -1,0 +1,145 @@
+/* ============================================
+   家校通AI助手 - 统一暗色设计系统 v6
+   暗夜琉璃 · 沉浸视觉
+   ============================================ */
+
+/* ============================================
+   CSS Variables - Design Tokens
+   ============================================ */
+page {
+  /* Primary - 星际紫 */
+  --primary-50: #EEF2FF;
+  --primary-100: #E0E7FF;
+  --primary-200: #C7D2FE;
+  --primary-300: #A5B4FC;
+  --primary-400: #818CF8;
+  --primary-500: #667EEA;
+  --primary-600: #5B6ABF;
+  --primary-700: #4C51BF;
+
+  /* Secondary - 智慧金 */
+  --secondary-50: #FFF8E1;
+  --secondary-100: #FFECB3;
+  --secondary-500: #F59E0B;
+  --secondary-600: #D97706;
+
+  /* Accent - 玫红 */
+  --accent-50: #FFF1F2;
+  --accent-500: #EC4899;
+  --accent-600: #DB2777;
+
+  /* Semantic */
+  --success: #10B981;
+  --success-light: rgba(16, 185, 129, 0.15);
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #667EEA;
+
+  /* Neutral - 暗色主题 */
+  --neutral-50: #1E2347;
+  --neutral-100: #1A1F4E;
+  --neutral-200: #2D3154;
+  --neutral-300: #45497A;
+  --neutral-400: #6B6FA0;
+  --neutral-500: #9094C0;
+  --neutral-600: #B0B4D8;
+  --neutral-700: #CDD0EA;
+  --neutral-800: #E4E6F5;
+  --neutral-900: #F5F6FC;
+
+  /* Glass - 玻璃态 */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-hover: rgba(255, 255, 255, 0.12);
+  --glass-bg-strong: rgba(255, 255, 255, 0.14);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.25);
+
+  /* Typography */
+  --font-size-xs: 20rpx;
+  --font-size-sm: 22rpx;
+  --font-size-base: 26rpx;
+  --font-size-lg: 28rpx;
+  --font-size-xl: 32rpx;
+  --font-size-2xl: 36rpx;
+  --font-size-3xl: 44rpx;
+
+  /* Spacing */
+  --space-1: 8rpx;
+  --space-2: 16rpx;
+  --space-3: 24rpx;
+  --space-4: 32rpx;
+  --space-5: 40rpx;
+  --space-6: 48rpx;
+  --space-8: 64rpx;
+
+  /* Radius */
+  --radius-sm: 12rpx;
+  --radius-md: 20rpx;
+  --radius-lg: 28rpx;
+  --radius-xl: 36rpx;
+  --radius-2xl: 48rpx;
+  --radius-full: 9999rpx;
+
+  /* Shadows */
+  --shadow-sm: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 12rpx 32rpx rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20rpx 60rpx rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 28rpx 80rpx rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 8rpx 32rpx rgba(102, 126, 234, 0.25);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Z-Index */
+  --z-dropdown: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+
+  /* Background */
+  --bg-gradient: linear-gradient(135deg, #0A0E27 0%, #1A1F4E 40%, #2D1B4E 80%, #1A1033 100%);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--neutral-800);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+view, text {
+  box-sizing: border-box;
+}
+
+page {
+  min-height: 100vh;
+}
+
+/* ============================================
+   通用暗色玻璃卡片
+   ============================================ */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border: 1rpx solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}

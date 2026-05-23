@@ -1,0 +1,124 @@
+<view class="container">
+  <!-- 人员头部卡片 -->
+  <view class="person-header">
+    <view class="avatar-section">
+      <view class="avatar-ring">
+        <view class="avatar-circle {{person.gender === '女' ? 'female' : 'male'}}">
+          <text class="avatar-text">{{person.name.charAt(0)}}</text>
+        </view>
+        <view class="avatar-glow {{person.isStable ? 'stable' : ''}}"></view>
+      </view>
+      <view class="gender-badge {{person.gender === '女' ? 'female' : 'male'}}">
+        <text>{{person.gender === '女' ? '♀' : '♂'}}</text>
+      </view>
+    </view>
+
+    <view class="person-info">
+      <view class="name-row">
+        <text class="person-name">{{person.name}}</text>
+        <view class="stable-badge" wx:if="{{person.isStable}}">
+          <text class="badge-icon">✓</text>
+          <text class="badge-text">已稳定</text>
+        </view>
+      </view>
+      <view class="person-tags">
+        <view class="tag tag-type">{{person.recipientType}}</view>
+        <view class="tag tag-gender">{{person.gender}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 属性摘要卡片 -->
+  <view class="summary-card">
+    <view class="summary-top">
+      <view class="summary-label">
+        <text class="label-icon">🎯</text>
+        <text class="label-text">当前属性判断</text>
+      </view>
+      <view class="analysis-count-badge">
+        <text>分析 {{person.analysisCount || 0}} 次</text>
+      </view>
+    </view>
+
+    <view class="type-display">
+      <text class="type-value">{{person.currentType || '待分析'}}</text>
+    </view>
+
+    <view class="confidence-section">
+      <view class="confidence-header">
+        <text class="confidence-label">置信度</text>
+        <text class="confidence-value">{{person.confidence || 0}}%</text>
+      </view>
+      <view class="confidence-bar">
+        <view class="confidence-fill" style="width: {{person.confidence || 0}}%"></view>
+      </view>
+    </view>
+
+    <view class="stability-hint" wx:if="{{person.isStable}}">
+      <text class="hint-icon">✓</text>
+      <text class="hint-text">多次分析一致，属性判断稳定</text>
+    </view>
+    <view class="stability-hint" wx:elif="{{(person.analysisCount || 0) >= 3}}">
+      <text class="hint-icon">📈</text>
+      <text class="hint-text">分析次数充足，判断可信度较高</text>
+    </view>
+    <view class="stability-hint active" wx:else>
+      <text class="hint-icon">💡</text>
+      <text class="hint-text">持续分析可提高置信度</text>
+    </view>
+  </view>
+
+  <!-- 分析历史 -->
+  <view class="history-card">
+    <view class="card-header">
+      <text class="header-icon">📋</text>
+      <text class="header-title">分析历史</text>
+    </view>
+
+    <view class="history-list" wx:if="{{analyses.length > 0}}">
+      <view wx:for="{{analyses}}" wx:key="index" class="history-item">
+        <view class="history-timeline">
+          <view class="timeline-dot"></view>
+          <view class="timeline-line" wx:if="{{index < analyses.length - 1}}"></view>
+        </view>
+
+        <view class="history-content">
+          <view class="history-header">
+            <text class="history-time">{{formatTime(item.createdAt)}}</text>
+            <text class="history-index">第{{analyses.length - index}}次</text>
+          </view>
+
+          <view class="history-message">
+            <text class="message-label">对方话术</text>
+            <text class="message-text">{{item.userMessage}}</text>
+          </view>
+
+          <view class="result-badges">
+            <view class="badge badge-orange">{{item.qingzhiType}}</view>
+            <view class="badge badge-green">{{item.mbtiType}}</view>
+            <view class="badge badge-blue">{{item.satirStance}}</view>
+          </view>
+
+          <view class="reply-preview" wx:if="{{item.replyOptions && item.replyOptions.length > 0}}">
+            <text class="reply-label">建议回复</text>
+            <text class="reply-text">{{item.replyOptions[0]}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-history" wx:else>
+      <view class="empty-icon">📋</view>
+      <text class="empty-text">暂无分析记录</text>
+      <text class="empty-hint">点击下方按钮开始分析</text>
+    </view>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="bottom-action">
+    <view class="action-btn" bindtap="goToAnalyze">
+      <text class="btn-icon">+</text>
+      <text class="btn-text">新增分析</text>
+    </view>
+  </view>
+</view>

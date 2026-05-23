@@ -1,0 +1,21 @@
+{
+  "name": "home-school-ai-coach-server",
+  "version": "1.0.0",
+  "description": "家校AI沟通教练后端服务",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "@alicloud/openapi-client": "^0.4.15",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "multer": "^2.1.1",
+    "wechatpay-node-v3": "^2.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

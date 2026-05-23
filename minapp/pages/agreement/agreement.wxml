@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="header-section">
+    <text class="header-title">用户协议</text>
+    <text class="header-subtitle">更新日期：{{lastUpdate}}</text>
+  </view>
+
+  <view class="content-section">
+    <view class="section-title">一、服务说明</view>
+    <view class="section-content">
+      <text class="text">家校通AI助手是一款基于人工智能的家校沟通辅助工具，通过分析聊天内容帮助用户更好地理解和回应对方。</text>
+    </view>
+
+    <view class="section-title">二、使用规范</view>
+    <view class="section-content">
+      <text class="text">1. 请勿使用本工具进行任何违法活动
+      2. 请勿上传虚假、恶意内容
+      3. 请尊重他人隐私，不分析未经授权的他人聊天记录
+      4. AI分析结果仅供参考，不保证100%准确</text>
+    </view>
+
+    <view class="section-title">三、会员服务</view>
+    <view class="section-content">
+      <text class="text">1. 会员权益：支付9.9元/月可开通会员，享受不限分析次数、永久历史等权益
+      2. 退款政策：如需退款，请联系作者处理
+      3. 价格调整：我们保留调整价格的权利，会提前通知</text>
+    </view>
+
+    <view class="section-title">四、免责声明</view>
+    <view class="section-content">
+      <text class="text">1. AI分析基于心理学理论模型，结果仅供参考
+      2. 请勿将分析结果作为唯一决策依据
+      3. 对于因使用本工具造成的任何损失，我们不承担责任</text>
+    </view>
+
+    <view class="section-title">五、知识产权</view>
+    <view class="section-content">
+      <text class="text">本工具及其内容的知识产权归作者所有。未经授权，请勿复制、分发或商业使用。</text>
+    </view>
+
+    <view class="section-title">六、协议修改</view>
+    <view class="section-content">
+      <text class="text">我们有权随时修改本协议。修改后的协议将在本小程序内公布，继续使用即表示接受新协议。</text>
+    </view>
+
+    <view class="section-title">七、联系我们</view>
+    <view class="section-content">
+      <text class="text">如有任何问题，请联系：
+      微信号：mss871386855（朝也）</text>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

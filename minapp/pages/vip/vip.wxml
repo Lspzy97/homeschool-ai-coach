@@ -1,0 +1,320 @@
+<view class="container">
+  <!-- 顶部装饰光球 -->
+  <view class="top-decoration">
+    <view class="decoration-orb orb-1"></view>
+    <view class="decoration-orb orb-2"></view>
+  </view>
+
+  <!-- 页面标题 -->
+  <view class="header-section">
+    <view class="header-icon">👑</view>
+    <text class="header-title">会员中心</text>
+    <text class="header-subtitle">解锁全部功能 · 让分析更自由</text>
+  </view>
+
+  <!-- 当前会员状态 -->
+  <view class="vip-status-card" wx:if="{{isVip}}">
+    <view class="status-badge">
+      <text class="badge-icon">👑</text>
+      <text class="badge-text">VIP会员</text>
+    </view>
+    <view class="status-info">
+      <text class="status-label">会员有效期至</text>
+      <text class="status-value">{{expireDate}}</text>
+    </view>
+    <view class="status-info">
+      <text class="status-label">会员等级</text>
+      <text class="status-value">{{vipLevel === 'monthly' ? '月卡会员' : vipLevel === 'yearly' ? '年卡会员' : '终身会员'}}</text>
+    </view>
+    <view class="vip-features">
+      <text class="feature-tag" wx:for="{{['不限分析次数', '保存人员不限', '历史永久', '高级回复10条', '萨提亚深度分析', 'MBTI深度解读', '沟通雷区', '情绪触发点', '关系诊断', '心理学效应']}}" wx:key="index">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 需要登录 -->
+  <view class="login-tip-card" wx:if="{{needLogin}}">
+    <view class="tip-icon">👋</view>
+    <text class="tip-title">登录后查看会员状态</text>
+    <view class="login-btn" bindtap="goLogin">
+      <text class="btn-text">微信授权登录</text>
+    </view>
+  </view>
+
+  <!-- 免费版升级提示 -->
+  <view class="upgrade-prompt" wx:if="{{!isVip && !needLogin}}">
+    <view class="prompt-header">
+      <text class="prompt-icon">💎</text>
+      <text class="prompt-title">开通会员</text>
+    </view>
+    <text class="prompt-desc">解锁全部高级功能，让家校沟通更轻松</text>
+  </view>
+
+  <!-- 账号信息卡片（已登录用户可见） -->
+  <view class="account-card" wx:if="{{!needLogin}}">
+    <view class="account-header">
+      <text class="account-icon">🔑</text>
+      <text class="account-title">我的账号</text>
+    </view>
+    <view class="account-info" bindtap="copyOpenid">
+      <text class="info-label">OpenID（点击复制）</text>
+      <text class="info-value">{{userOpenidShort}}</text>
+      <text class="info-tip">👆 点击复制</text>
+    </view>
+    <view class="account-tip">
+      <text>开通会员后出示此ID给作者后台开通</text>
+    </view>
+  </view>
+
+  <!-- 权益对比 -->
+  <view class="compare-section">
+    <view class="compare-header">
+      <text class="compare-title">功能对比</text>
+    </view>
+
+    <!-- 免费版 -->
+    <view class="compare-card">
+      <view class="compare-card-header free">
+        <text class="card-title">免费版</text>
+        <text class="card-price">¥0</text>
+      </view>
+      <view class="compare-list">
+        <view class="compare-item">
+          <text class="item-icon">✅</text>
+          <text class="item-text">每天5次分析</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">✅</text>
+          <text class="item-text">保存3个分析对象</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">✅</text>
+          <text class="item-text">7天历史记录</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">✅</text>
+          <text class="item-text">基础分析</text>
+        </view>
+        <view class="compare-item disabled">
+          <text class="item-icon">❌</text>
+          <text class="item-text">高级推荐回复</text>
+        </view>
+        <view class="compare-item disabled">
+          <text class="item-icon">❌</text>
+          <text class="item-text">萨提亚深度分析</text>
+        </view>
+        <view class="compare-item disabled">
+          <text class="item-icon">❌</text>
+          <text class="item-text">MBTI深度解读</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 会员版 -->
+    <view class="compare-card vip monthly {{selectedPlan === 'monthly' ? 'selected' : ''}}" bindtap="selectPlan" data-plan="monthly">
+      <view class="compare-card-header vip">
+        <text class="card-title">👑 月卡会员</text>
+        <view class="price-wrap">
+          <text class="card-price">¥9.9</text>
+          <text class="card-price-unit">/月</text>
+        </view>
+      </view>
+      <view class="compare-list">
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">不限分析次数</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">保存分析对象不限</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">历史永久保存</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">高级推荐回复10条</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">萨提亚沟通深度分析</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">MBTI深度解读</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">沟通雷区预警</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">情绪触发点地图</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">关系阶段诊断</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">心理学效应应用</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 年卡会员 -->
+    <view class="compare-card vip yearly {{selectedPlan === 'yearly' ? 'selected' : ''}}" bindtap="selectPlan" data-plan="yearly">
+      <view class="compare-card-header vip">
+        <text class="card-title">👑 年卡会员</text>
+        <view class="price-wrap">
+          <text class="card-price">¥66</text>
+          <text class="card-price-unit">/年</text>
+        </view>
+      </view>
+      <view class="discount-tag">推荐</view>
+      <view class="compare-list">
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">月均仅5.5元</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">不限分析次数</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">保存分析对象不限</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">历史永久保存</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">高级推荐回复10条</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">萨提亚沟通深度分析</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">MBTI深度解读</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">沟通雷区预警</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">情绪触发点地图</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">关系阶段诊断</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">心理学效应应用</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 永久会员 -->
+    <view class="compare-card vip permanent {{selectedPlan === 'permanent' ? 'selected' : ''}}" bindtap="selectPlan" data-plan="permanent">
+      <view class="compare-card-header vip">
+        <text class="card-title">👑 永久会员</text>
+        <view class="price-wrap">
+          <text class="card-price">¥199</text>
+          <text class="card-price-unit">/终身</text>
+        </view>
+      </view>
+      <view class="compare-list">
+        <view class="compare-item">
+          <text class="item-icon">💎</text>
+          <text class="item-text highlight">一次购买终身VIP</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">全部年卡权益</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">优先客服支持</text>
+        </view>
+        <view class="compare-item">
+          <text class="item-icon">🌟</text>
+          <text class="item-text highlight">新功能优先体验</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开通按钮 -->
+  <view class="upgrade-btn-wrap" wx:if="{{!isVip && !needLogin}}">
+    <!-- 微信支付按钮（方案A：已配置商户号） -->
+    <view class="upgrade-btn wechat-pay-btn" bindtap="onWechatPay" wx:if="{{paymentReady}}">
+      <text class="btn-icon">💳</text>
+      <text class="btn-text">微信支付 {{vipPrice}}元开通 {{selectedPlan === 'monthly' ? '月卡' : selectedPlan === 'yearly' ? '年卡' : '永久会员'}}</text>
+    </view>
+    <view class="or-text" wx:if="{{paymentReady}}">
+      <text>或</text>
+    </view>
+    <!-- 人工开通（方案B或方案A失败时） -->
+    <view class="upgrade-btn" bindtap="onContactAuthor">
+      <text class="btn-icon">💬</text>
+      <text class="btn-text">联系作者开通 {{selectedPlan === 'monthly' ? '月卡' : selectedPlan === 'yearly' ? '年卡' : '永久会员'}}</text>
+    </view>
+    <view class="or-text">
+      <text>或</text>
+    </view>
+    <view class="wechat-copy" bindtap="copyWechat">
+      <text class="copy-label">复制微信号</text>
+      <text class="wechat-id">mss871386855（朝也）</text>
+      <text class="copy-icon">📋</text>
+    </view>
+  </view>
+
+  <!-- 已开通用户说明 -->
+  <view class="vip-user-guide" wx:if="{{!isVip && !needLogin}}">
+    <text class="guide-title">如何开通？</text>
+    <view class="guide-steps">
+      <view class="step-item">
+        <text class="step-num">1</text>
+        <text class="step-text">点击上方按钮或复制微信号</text>
+      </view>
+      <view class="step-item">
+        <text class="step-num">2</text>
+        <text class="step-text">添加作者微信，备注"开通会员"</text>
+      </view>
+      <view class="step-item">
+        <text class="step-num">3</text>
+        <text class="step-text">转账9.9元，开通月卡会员</text>
+      </view>
+      <view class="step-item">
+        <text class="step-num">4</text>
+        <text class="step-text">作者后台开通，享受全部功能</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部安全提示 -->
+  <view class="safe-tip">
+    <text class="safe-icon">🔒</text>
+    <text class="safe-text">转账给作者本人，安全有保障</text>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="copy-section">
+    <view class="copy-content" bindtap="copyWechat">
+      <text class="copy-label">有问题请联系你的嘴替作者（朝也）</text>
+      <view class="copy-wechat-box">
+        <text class="wechat-id">mss871386855</text>
+        <text class="copy-icon">📋</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部留白 -->
+  <view class="bottom-space"></view>
+</view>

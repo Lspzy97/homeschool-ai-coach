@@ -1,0 +1,120 @@
+<view class="container">
+  <!-- 顶部装饰光球 -->
+  <view class="top-decoration">
+    <view class="decoration-orb orb-1"></view>
+    <view class="decoration-orb orb-2"></view>
+  </view>
+
+  <!-- 标题区域 -->
+  <view class="header-section">
+    <view class="header-icon">📚</view>
+    <text class="header-title">情直理论</text>
+    <text class="header-subtitle">让沟通更简单 · 让关系更清晰</text>
+  </view>
+
+  <!-- 理论介绍卡片 -->
+  <view class="theory-card">
+    <view class="card-header">
+      <text class="card-icon">💡</text>
+      <text class="card-title">什么是情直理论？</text>
+    </view>
+    <view class="card-content">
+      <text class="content-text">{{theoryContent}}</text>
+    </view>
+  </view>
+
+  <!-- 八种属性类型 -->
+  <view class="types-section">
+    <view class="section-header">
+      <text class="section-icon">🎯</text>
+      <text class="section-title">八种属性画像</text>
+    </view>
+
+    <!-- 男性类型 -->
+    <view class="gender-group">
+      <view class="gender-header">
+        <text class="gender-icon">👨</text>
+        <text class="gender-label">男性类型</text>
+      </view>
+      <view class="types-grid">
+        <view wx:for="{{typeList}}" wx:key="index" wx:if="{{index < 4}}" class="type-card">
+          <image class="type-avatar" src="{{item.imgSrc}}" mode="aspectFill" bindtap="previewImage" data-src="{{item.imgSrc}}"></image>
+          <view class="type-info">
+            <text class="type-name" style="color: {{item.color}};">{{item.name}}</text>
+            <text class="type-desc">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 女性类型 -->
+    <view class="gender-group">
+      <view class="gender-header">
+        <text class="gender-icon">👩</text>
+        <text class="gender-label">女性类型</text>
+      </view>
+      <view class="types-grid">
+        <view wx:for="{{typeList}}" wx:key="index" wx:if="{{index >= 4}}" class="type-card">
+          <image class="type-avatar" src="{{item.imgSrc}}" mode="aspectFill" bindtap="previewImage" data-src="{{item.imgSrc}}"></image>
+          <view class="type-info">
+            <text class="type-name" style="color: {{item.color}};">{{item.name}}</text>
+            <text class="type-desc">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 匹配原则 -->
+  <view class="match-section">
+    <view class="section-header">
+      <text class="section-icon">🔗</text>
+      <text class="section-title">互配原则</text>
+    </view>
+    <view class="match-rules">
+      <view class="rule-item">
+        <view class="rule-icon-wrap">
+          <text class="rule-icon">💫</text>
+        </view>
+        <view class="rule-content">
+          <text class="rule-title">情直互配</text>
+          <text class="rule-desc">情感型与直接型互补，更易理解彼此</text>
+        </view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-icon-wrap">
+          <text class="rule-icon">⚡</text>
+        </view>
+        <view class="rule-content">
+          <text class="rule-title">攻对单</text>
+          <text class="rule-desc">主动型配专注型，相互成就</text>
+        </view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-icon-wrap">
+          <text class="rule-icon">🌟</text>
+        </view>
+        <view class="rule-content">
+          <text class="rule-title">守对多</text>
+          <text class="rule-desc">保守型配开放型，各取所需</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="footer-tip">
+    <text class="tip-text">了解属性，让沟通更顺畅</text>
+  </view>
+
+  <!-- 复制区域 -->
+  <view class="copy-section">
+    <view class="copy-content" bindtap="copyWechat">
+      <text class="copy-label">深入学习情直理论请＋六日小助理微信：</text>
+      <view class="copy-wechat-box">
+        <text class="wechat-id">liurizhuli</text>
+        <text class="copy-icon">📋</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="header-section">
+    <text class="header-title">隐私政策</text>
+    <text class="header-subtitle">更新日期：{{lastUpdate}}</text>
+  </view>
+
+  <view class="content-section">
+    <view class="section-title">一、信息收集与使用</view>
+    <view class="section-content">
+      <text class="text">我们收集您提供的聊天记录内容，用于AI分析与生成回复建议。所有分析过程均在服务器端完成，数据不会分享给第三方。</text>
+    </view>
+
+    <view class="section-title">二、信息存储</view>
+    <view class="section-content">
+      <text class="text">您的聊天记录、分析结果将安全存储在我们的服务器上。如需删除您的数据，请联系作者微信号：mss871386855</text>
+    </view>
+
+    <view class="section-title">三、信息保护</view>
+    <view class="section-content">
+      <text class="text">我们采用行业标准的安全措施保护您的数据，包括数据加密传输、访问控制等措施。</text>
+    </view>
+
+    <view class="section-title">四、第三方服务</view>
+    <view class="section-content">
+      <text class="text">我们使用阿里云通义千问API进行AI分析，该服务将接收您的聊天内容进行分析。阿里云隐私政策适用于其服务范围。</text>
+    </view>
+
+    <view class="section-title">五、用户权利</view>
+    <view class="section-content">
+      <text class="text">您有权随时查看、导出或删除您的个人数据。如对隐私政策有疑问，请联系我们。</text>
+    </view>
+
+    <view class="section-title">六、政策更新</view>
+    <view class="section-content">
+      <text class="text">我们可能会不时更新本隐私政策。更新后的政策将在本小程序内公布。</text>
+    </view>
+
+    <view class="section-title">七、联系方式</view>
+    <view class="section-content">
+      <text class="text">如有任何隐私相关问题，请联系：
+      微信号：mss871386855（朝也）</text>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

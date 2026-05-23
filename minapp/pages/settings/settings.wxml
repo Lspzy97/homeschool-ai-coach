@@ -1,0 +1,174 @@
+<view class="container">
+  <!-- 页面头部 -->
+  <view class="page-header">
+    <view class="header-icon">
+      <text>⚙️</text>
+    </view>
+    <text class="page-title">设置</text>
+    <text class="page-subtitle">服务器配置 · 使用指南</text>
+  </view>
+
+  <!-- 配置区域 -->
+  <view class="section-card">
+    <view class="card-accent-bar accent-purple"></view>
+    <view class="section-header">
+      <text class="section-icon">🔗</text>
+      <text class="section-title">服务器配置</text>
+    </view>
+
+    <!-- API地址输入 -->
+    <view class="input-group">
+      <view class="input-row">
+        <view class="input-label">
+          <text class="label-icon">🌐</text>
+          <text class="label-text">API地址</text>
+        </view>
+      </view>
+      <input class="config-input" value="{{apiUrl}}" bindinput="onApiUrlInput" placeholder="http://192.168.x.x:3000"/>
+      <view class="input-hint">
+        <text class="hint-text">📌 在小程序中填入下方本机IP，格式：http://192.168.1.54:3000</text>
+      </view>
+    </view>
+
+    <!-- 本机IP -->
+    <view class="input-group">
+      <view class="input-row">
+        <view class="input-label">
+          <text class="label-icon">💻</text>
+          <text class="label-text">本机IP</text>
+        </view>
+      </view>
+      <view class="ip-display">
+        <text class="ip-value">{{localIP}}</text>
+        <view class="copy-btn" bindtap="copyIP">
+          <text class="btn-text">复制</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 使用说明 -->
+  <view class="section-card">
+    <view class="card-accent-bar accent-blue"></view>
+    <view class="section-header">
+      <text class="section-icon">📖</text>
+      <text class="section-title">使用说明</text>
+    </view>
+
+    <view class="guide-list">
+      <view class="guide-item">
+        <view class="guide-num">1</view>
+        <view class="guide-content">
+          <text class="guide-title">连接服务器</text>
+          <text class="guide-desc">确保手机和电脑在同一WiFi网络，复制本机IP到API地址输入框</text>
+        </view>
+      </view>
+      <view class="guide-item">
+        <view class="guide-num">2</view>
+        <view class="guide-content">
+          <text class="guide-title">开始分析</text>
+          <text class="guide-desc">返回「分析」页面，粘贴聊天记录，点击「开始分析」</text>
+        </view>
+      </view>
+      <view class="guide-item">
+        <view class="guide-num">3</view>
+        <view class="guide-content">
+          <text class="guide-title">查看结果</text>
+          <text class="guide-desc">查看属性分析和推荐回复，点击「复制」使用</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 心理学维度说明 -->
+  <view class="section-card">
+    <view class="card-accent-bar accent-green"></view>
+    <view class="section-header">
+      <text class="section-icon">🧠</text>
+      <text class="section-title">心理学分析维度</text>
+    </view>
+
+    <view class="dimension-list">
+      <view class="dimension-item">
+        <view class="dimension-header">
+          <text class="dimension-icon">🎯</text>
+          <text class="dimension-title">情直理论</text>
+        </view>
+        <text class="dimension-desc">8种情感类型：多偶直男、单偶直男、强势情男、老实情男、攻直女、守直女、攻情女、守情女</text>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-header">
+          <text class="dimension-icon">🎭</text>
+          <text class="dimension-title">MBTI</text>
+        </view>
+        <text class="dimension-desc">16型人格：INTJ、INTP、ENTJ、ENTP、INFJ、INFP、ENFJ、ENFP、ISTJ、ISFJ、ESTJ、ESFJ、ISTP、ISFP、ESTP、ESFP</text>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-header">
+          <text class="dimension-icon">🔗</text>
+          <text class="dimension-title">依恋类型</text>
+        </view>
+        <text class="dimension-desc">安全型、焦虑型、回避型、混乱型</text>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-header">
+          <text class="dimension-icon">💬</text>
+          <text class="dimension-title">萨提亚沟通</text>
+        </view>
+        <text class="dimension-desc">讨好型、指责型、超理智型、打岔型、一致型</text>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-header">
+          <text class="dimension-icon">🧩</text>
+          <text class="dimension-title">大五人格</text>
+        </view>
+        <text class="dimension-desc">开放性、尽责性、外向性、宜人性、神经质</text>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-header">
+          <text class="dimension-icon">📚</text>
+          <text class="dimension-title">学习风格</text>
+        </view>
+        <text class="dimension-desc">视觉型、听觉型、读写型、动觉型</text>
+      </view>
+
+      <view class="dimension-item">
+        <view class="dimension-header">
+          <text class="dimension-icon">💡</text>
+          <text class="dimension-title">情商与认知</text>
+        </view>
+        <text class="dimension-desc">情商水平、认知偏差、自我决定理论(SDT)</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="section-card">
+    <view class="card-accent-bar accent-orange"></view>
+    <view class="about-section">
+      <view class="app-info">
+        <view class="app-icon">
+          <text>💬</text>
+        </view>
+        <view class="app-detail">
+          <text class="app-name">家校AI沟通教练</text>
+          <text class="app-version">v2.0.0</text>
+        </view>
+      </view>
+      <text class="about-desc">基于情直理论 + 9大心理学维度的智能沟通助手</text>
+    </view>
+    <view class="legal-links">
+      <text class="link-item" bindtap="goPrivacy">隐私政策</text>
+      <text class="link-divider">|</text>
+      <text class="link-item" bindtap="goAgreement">用户协议</text>
+    </view>
+  </view>
+
+  <!-- 底部留白 -->
+  <view class="bottom-space"></view>
+</view>

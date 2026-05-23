@@ -1,0 +1,210 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 50%, #f0f4ff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40rpx;
+}
+
+/* ============================================
+   顶部装饰
+   ============================================ */
+
+.top-decoration {
+  position: relative;
+  width: 100%;
+  height: 300rpx;
+}
+
+.decoration-orb {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.orb-1 {
+  width: 200rpx;
+  height: 200rpx;
+  background: linear-gradient(135deg, #4A90D9 0%, #6BB3F0 100%);
+  top: -60rpx;
+  right: -60rpx;
+}
+
+.orb-2 {
+  width: 150rpx;
+  height: 150rpx;
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  top: 40rpx;
+  left: -40rpx;
+  opacity: 0.4;
+}
+
+.orb-3 {
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
+  top: 120rpx;
+  right: 40rpx;
+  opacity: 0.3;
+}
+
+/* ============================================
+   Logo区域
+   ============================================ */
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60rpx;
+}
+
+.logo-icon {
+  width: 160rpx;
+  height: 160rpx;
+  background: linear-gradient(135deg, #4A90D9 0%, #667EEA 100%);
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80rpx;
+  box-shadow: 0 20rpx 60rpx rgba(74, 144, 217, 0.3);
+  margin-bottom: 30rpx;
+}
+
+.logo-title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+  letter-spacing: 4rpx;
+}
+
+.logo-subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* ============================================
+   登录区域
+   ============================================ */
+
+.login-section {
+  width: 100%;
+  margin-top: 80rpx;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 50rpx 40rpx;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.card-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 50rpx;
+  text-align: center;
+}
+
+/* ============================================
+   微信登录按钮
+   ============================================ */
+
+.wx-login-btn {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, #07C160 0%, #06AD56 100%);
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.3);
+}
+
+.wx-login-btn::after {
+  border: none;
+}
+
+.btn-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.btn-text {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* ============================================
+   错误提示
+   ============================================ */
+
+.error-tip {
+  width: 100%;
+  background: #FFF2F2;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-top: 30rpx;
+}
+
+.error-text {
+  font-size: 24rpx;
+  color: #FF6B6B;
+}
+
+/* ============================================
+   跳过按钮
+   ============================================ */
+
+.skip-btn {
+  margin-top: 40rpx;
+  padding: 20rpx;
+}
+
+.skip-text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* ============================================
+   底部说明
+   ============================================ */
+
+.footer-tip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 40rpx 0;
+  flex-wrap: wrap;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.link-text {
+  font-size: 24rpx;
+  color: #4A90D9;
+  margin: 0 6rpx;
+}

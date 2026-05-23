@@ -1,0 +1,18 @@
+[
+  {
+    "openid": "test_0f3Z1Zml2WLtNh4AXIml2MTFWW2Z1ZmW",
+    "token": "99949b25882ca2d6b953873bd34b0ad91021c8a885c4397774defdd629593234",
+    "createdAt": "2026-05-23T13:47:03.091Z",
+    "isVip": false,
+    "vipLevel": null,
+    "expireDate": null
+  },
+  {
+    "openid": "test_0d31xuFa1aBjLL0CkRHa1m46c731xuFP",
+    "token": "b11d53ace32c6f309150e77ce362361ae0710c93d326a9cc5affd20423fd6bbd",
+    "createdAt": "2026-05-23T14:06:34.734Z",
+    "isVip": false,
+    "vipLevel": null,
+    "expireDate": null
+  }
+]

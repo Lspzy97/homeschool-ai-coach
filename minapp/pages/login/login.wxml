@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 顶部装饰 -->
+  <view class="top-decoration">
+    <view class="decoration-orb orb-1"></view>
+    <view class="decoration-orb orb-2"></view>
+    <view class="decoration-orb orb-3"></view>
+  </view>
+
+  <!-- Logo区域 -->
+  <view class="logo-section">
+    <view class="logo-icon">💬</view>
+    <text class="logo-title">家校AI沟通教练</text>
+    <text class="logo-subtitle">基于心理学分析的家校沟通助手</text>
+  </view>
+
+  <!-- 登录区域 -->
+  <view class="login-section">
+    <view class="login-card">
+      <text class="card-title">微信授权登录</text>
+      <text class="card-desc">点击下方按钮，使用微信快速登录</text>
+
+      <!-- 微信登录按钮 -->
+      <button class="wx-login-btn" bindtap="onWxLogin" loading="{{loading}}" disabled="{{loading}}">
+        <text class="btn-icon">📱</text>
+        <text class="btn-text">{{loading ? '登录中...' : '微信授权登录'}}</text>
+      </button>
+
+      <!-- 错误提示 -->
+      <view class="error-tip" wx:if="{{error}}">
+        <text class="error-text">{{error}}</text>
+      </view>
+
+      <!-- 跳过 -->
+      <view class="skip-btn" bindtap="onSkip">
+        <text class="skip-text">先看看再说</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部说明 -->
+  <view class="footer-tip">
+    <text class="footer-text">登录表示同意</text>
+    <text class="link-text" bindtap="goAgreement">《用户协议》</text>
+    <text class="footer-text">和</text>
+    <text class="link-text" bindtap="goPrivacy">《隐私政策》</text>
+  </view>
+</view>

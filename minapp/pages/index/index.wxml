@@ -1,0 +1,507 @@
+<view class="container">
+  <!-- 右上角使用小贴士 -->
+  <view class="help-tip-btn" bindtap="showHelpTip">
+    <text>？</text>
+  </view>
+
+  <!-- 贴士弹窗 -->
+  <view class="help-modal" wx:if="{{showHelpTipModal}}" bindtap="hideHelpTip">
+    <view class="help-content" catchtap="">
+      <view class="help-header">
+        <text class="help-title">💡 微信悬浮窗设置</text>
+        <view class="help-close" bindtap="hideHelpTip">×</view>
+      </view>
+      <view class="help-body">
+        <view class="help-step">
+          <text class="step-num">1</text>
+          <text class="step-text">打开微信，点击右下角「我」</text>
+        </view>
+        <view class="help-step">
+          <text class="step-num">2</text>
+          <text class="step-text">点击「设置」→ 「浮窗」</text>
+        </view>
+        <view class="help-step">
+          <text class="step-num">3</text>
+          <text class="step-text">开启「浮窗」功能</text>
+        </view>
+        <view class="help-step">
+          <text class="step-num">4</text>
+          <text class="step-text">使用时从屏幕边缘拖出小程序即可</text>
+        </view>
+        <view class="help-benefit">
+          <text>✨ 设置后，小程序会悬浮在微信界面侧边</text>
+          <text>✨ 点击即可快速使用，不用来回切换</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Hero头部 - 大胆渐变设计 -->
+  <view class="hero-section">
+    <view class="hero-bg">
+      <view class="hero-orb hero-orb-1"></view>
+      <view class="hero-orb hero-orb-2"></view>
+    </view>
+    <view class="hero-content">
+      <view class="hero-badge">
+        <text class="badge-icon">✨</text>
+        <text class="badge-text">AI智能分析</text>
+      </view>
+      <view class="hero-icon">💬</view>
+      <text class="hero-title">家校沟通助手</text>
+      <text class="hero-subtitle">智能分析 · 生成最佳回复</text>
+    </view>
+  </view>
+
+  <!-- 主要内容区 -->
+  <view class="main-content">
+    <!-- API状态提示 -->
+    <view class="status-banner {{!apiUrl || apiUrl.indexOf('localhost') >= 0 ? 'warning' : 'success'}}" wx:if="{{!apiUrl || apiUrl.indexOf('localhost') >= 0}}">
+      <text class="status-icon">⚠️</text>
+      <text class="status-text">请先在「设置」配置API地址</text>
+    </view>
+
+    <!-- 情直理论入口 -->
+    <view class="theory-link" bindtap="goToGuide">
+      <text class="link-icon">📚</text>
+      <text class="link-text">了解情直理论</text>
+    </view>
+
+    <!-- 输入区域 -->
+    <view class="input-section">
+      <!-- 输入卡片 -->
+      <view class="input-card">
+        <view class="card-header-row">
+          <view class="card-label">
+            <text class="label-icon">💬</text>
+            <text class="label-text">对方话术</text>
+          </view>
+          <view class="header-actions">
+            <view class="action-btn" bindtap="chooseImage">
+              <text>📷</text>
+            </view>
+            <view class="action-btn clear-btn" bindtap="clearText">
+              <text class="trash-icon">🗑️</text>
+              <text class="x-mark">✕</text>
+            </view>
+          </view>
+        </view>
+        <textarea class="message-input" placeholder="粘贴家长/老师/同学发送的消息，让AI帮你分析对方属性并生成最佳回复..." maxlength="2000" value="{{userMessage}}" bindinput="onMessageInput"></textarea>
+        <view class="input-footer">
+          <text class="char-count">{{userMessage.length}}/2000</text>
+          <text class="voice-hint">长按输入框使用语音输入 🎤</text>
+        </view>
+
+        <!-- 快捷短语模板 -->
+        <view class="quick-phrases">
+          <view class="phrase-btn" bindtap="useQuickPhrase" data-phrases='["老师反馈孩子最近上课注意力不太集中，作业完成得也不太好，麻烦您多关注一下", "老师您好，孩子最近反映上课有点听不懂，想了解一下课堂表现怎么样", "老师，孩子这次作业完成质量下降了很多，不知道是不是在学校遇到什么问题了", "老师，最近发现孩子回家后情绪不太好，说上课听不进去，想请教一下在校情况"]'>
+            👨‍🏫 老师反馈
+          </view>
+          <view class="phrase-btn" bindtap="useQuickPhrase" data-phrases='["老师，这次孩子的考试成绩下滑比较明显，我们家长也很着急，请问主要问题出在哪里呢", "老师您好，孩子这次数学考得不太理想，不知道课堂上哪些知识点没掌握好", "老师，孩子说这次考试没发挥好，我们想了解一下具体是哪些题目丢分比较多", "老师，成绩出来后孩子情绪有点低落，想请您帮忙分析一下需要重点加强的地方"]'>
+            📊 成绩下滑
+          </view>
+          <view class="phrase-btn" bindtap="useQuickPhrase" data-phrases='["老师，我家孩子说最近在学校被某个同学欺负了，想请您帮忙了解一下情况", "老师，孩子回家说在学校被欺负了，我们家长很担心，能帮忙关注一下吗", "老师您好，孩子反映今天在学校和同学发生了冲突，能麻烦您帮忙调解一下吗", "老师，听说孩子在学校受了委屈，作为家长我们很着急，能了解一下具体情况吗"]'>
+            👫 校园纠纷
+          </view>
+          <view class="phrase-btn" bindtap="useQuickPhrase" data-phrases='["老师，孩子感冒了需要请假休息几天，麻烦帮忙登记一下，谢谢", "老师您好，孩子身体不舒服需要请假几天，落的课程我们会想办法补上的", "老师，孩子今天发烧了需要请假看医生，麻烦您帮忙处理一下", "老师，孩子有点不舒服想请两天假休息一下，麻烦老师批准并帮忙补课"]'>
+            🤒 请假
+          </view>
+          <view class="phrase-btn" bindtap="useQuickPhrase" data-phrases='["老师您好，孩子最近在家表现还不错，想了解一下在校情况，有什么需要我们配合的吗", "老师，孩子最近学习状态还可以，想问问在学校表现怎么样", "老师，我们家长想了解一下孩子最近的校园生活，您觉得有哪些地方可以改进", "老师您好，作为家长我们很关心孩子的成长，想请教一下如何更好地配合学校教育"]'>
+            ❓ 询问表现
+          </view>
+          <view class="phrase-btn" bindtap="useQuickPhrase" data-phrases='["老师，真的非常感谢您这段时间对孩子的耐心教导，孩子进步很明显，我们家长都很欣慰", "老师，谢谢您对孩子的关心和付出，孩子现在越来越喜欢上学了", "老师，您辛苦了！孩子的每一点进步都离不开您的细心教导，衷心感谢", "老师，感谢您一直以来的用心教育，孩子能有今天的进步全靠您，真的非常感激"]'>
+            🙏 表达感谢
+          </view>
+        </view>
+
+        <!-- 图片预览 -->
+        <view class="image-preview" wx:if="{{imagePath}}">
+          <image class="preview-img" src="{{imagePath}}" mode="aspectFit" bindtap="previewImage"/>
+          <view class="remove-btn" bindtap="removeImage">×</view>
+        </view>
+
+        <!-- 识别文字 -->
+        <view class="recognized-box" wx:if="{{recognizedText}}">
+          <view class="recognized-header">
+            <text class="recognized-icon">📝</text>
+            <text class="recognized-label">识别文字</text>
+          </view>
+          <text class="recognized-content">{{recognizedText}}</text>
+        </view>
+      </view>
+
+      <!-- 分析对象选择 -->
+      <view class="person-selector" bindtap="showPersonPicker">
+        <view class="selector-left">
+          <view class="avatar {{currentPerson && currentPerson.gender === '女' ? 'female' : 'male'}}" wx:if="{{currentPersonId && currentPerson}}">
+            <text>{{currentPerson.name.charAt(0)}}</text>
+          </view>
+          <view class="avatar-placeholder" wx:else>
+            <text>👤</text>
+          </view>
+          <view class="selector-info">
+            <text class="selector-name">{{currentPerson ? currentPerson.name : '选择分析对象'}}</text>
+            <view class="selector-tags" wx:if="{{currentPerson}}">
+              <text class="selector-tag tag-type">{{currentPerson.recipientType}}</text>
+              <text class="selector-tag tag-attr">{{currentPerson.currentType}}</text>
+              <text class="selector-tag tag-confidence">{{currentPerson.confidence}}%置信度</text>
+            </view>
+            <text class="selector-hint" wx:else>点击选择或新建分析对象</text>
+          </view>
+        </view>
+        <view class="selector-arrow">
+          <text>›</text>
+        </view>
+      </view>
+
+      <!-- 身份和性别选择 -->
+      <view class="options-row">
+        <view class="option-group">
+          <text class="option-label">对方身份</text>
+          <view class="option-tabs identity">
+            <view class="tab-btn {{recipientType === '家长' ? 'active' : ''}}" data-type="家长" bindtap="onRecipientChange">
+              <text class="tab-icon">🧑</text>
+              <text class="tab-text">家长</text>
+            </view>
+            <view class="tab-btn {{recipientType === '老师' ? 'active' : ''}}" data-type="老师" bindtap="onRecipientChange">
+              <text class="tab-icon">👨‍🏫</text>
+              <text class="tab-text">老师</text>
+            </view>
+            <view class="tab-btn {{recipientType === '同学' ? 'active' : ''}}" data-type="同学" bindtap="onRecipientChange">
+              <text class="tab-icon">👦</text>
+              <text class="tab-text">同学</text>
+            </view>
+          </view>
+        </view>
+        <view class="option-group">
+          <text class="option-label">性别</text>
+          <view class="option-tabs gender">
+            <view class="tab-btn {{gender === '男' ? 'active male' : ''}}" data-gender="男" bindtap="onGenderChange">♂</view>
+            <view class="tab-btn {{gender === '女' ? 'active female' : ''}}" data-gender="女" bindtap="onGenderChange">♀</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 分析按钮 -->
+    <view class="analyze-btn-wrap">
+      <view class="analyze-btn {{loading ? 'loading' : ''}}" bindtap="handleAnalyze">
+        <text class="btn-icon" wx:if="{{!loading}}">🔍</text>
+        <view class="loading-spinner" wx:if="{{loading}}"></view>
+        <text class="btn-text">{{loading ? '分析中...' : '开始分析'}}</text>
+      </view>
+    </view>
+
+    <!-- 分析结果 -->
+    <view class="result-section" wx:if="{{showResult}}">
+      <!-- 核心属性卡片 -->
+      <view class="result-card core-card">
+        <view class="result-header">
+          <text class="result-emoji">🎯</text>
+          <text class="result-title">属性分析</text>
+        </view>
+        <view class="attr-badges">
+          <view class="attr-badge primary">{{result.qingzhiType}}</view>
+          <view class="attr-badge success" wx:if="{{result.mbtiType && result.mbtiType !== '[会员可见]'}}">{{result.mbtiType}}</view>
+        </view>
+        <view class="attr-description">
+          <text>{{result.qingzhiDesc}}</text>
+          <text wx:if="{{result.mbtiDesc && result.mbtiType !== '[会员可见]'}}">{{result.mbtiDesc}}</text>
+          <view class="mbti-upgrade-hint" wx:if="{{result.mbtiType === '[会员可见]'}}">
+            <text class="hint-text">开通会员查看MBTI深度解读</text>
+          </view>
+        </view>
+        <view class="psychology-tip" wx:if="{{result.psychologyHint}}">
+          <text class="tip-icon">💡</text>
+          <text class="tip-text">{{result.psychologyHint}}</text>
+        </view>
+      </view>
+
+      <!-- 推荐回复 -->
+      <view class="result-card reply-card">
+        <view class="result-header">
+          <text class="result-emoji">💬</text>
+          <text class="result-title">推荐回复</text>
+        </view>
+        <view class="reply-list">
+          <view wx:for="{{result.replyOptions}}" wx:key="index" class="reply-item">
+            <view class="reply-header">
+              <text class="reply-label">选项{{index + 1}}</text>
+            </view>
+            <text class="reply-text">{{item}}</text>
+            <view class="copy-btn" bindtap="copyText" data-text="{{item}}">
+              <text>复制</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 依恋类型 -->
+      <view class="result-card dim-card" wx:if="{{result.attachmentType}}">
+        <view class="result-header">
+          <text class="result-emoji">🔗</text>
+          <text class="result-title">依恋类型</text>
+        </view>
+        <view class="dim-content">
+          <view class="dim-main">
+            <text class="dim-value">{{result.attachmentType}}</text>
+          </view>
+          <text class="dim-desc" wx:if="{{result.attachmentDesc}}">{{result.attachmentDesc}}</text>
+        </view>
+      </view>
+
+      <!-- 萨提亚沟通 -->
+      <view class="result-card dim-card" wx:if="{{result.satirStance && result.satirStance !== '[会员可见]'}}">
+        <view class="result-header">
+          <text class="result-emoji">💬</text>
+          <text class="result-title">萨提亚沟通</text>
+          <view class="vip-badge" wx:if="{{!result.isVip && result.trialRemaining >= 0 && result.trialRemaining < 2}}">
+            <text>试用中</text>
+          </view>
+        </view>
+        <view class="dim-content">
+          <view class="dim-main">
+            <text class="dim-value">{{result.satirStance}}</text>
+          </view>
+          <text class="dim-desc" wx:if="{{result.satirDesc}}">{{result.satirDesc}}</text>
+          <view class="upgrade-hint" wx:if="{{result.satirDesc && result.canTrial}}" bindtap="goToVip">
+            <text class="hint-text">开通会员查看完整分析</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 萨提亚会员引导（试用次数用完时显示） -->
+      <view class="result-card dim-card upgrade-card" wx:if="{{result.satirStance === '[会员可见]'}}">
+        <view class="result-header">
+          <text class="result-emoji">💬</text>
+          <text class="result-title">萨提亚沟通</text>
+          <view class="vip-only-badge">
+            <text>会员专属</text>
+          </view>
+        </view>
+        <view class="dim-content">
+          <view class="upgrade-prompt">
+            <text class="prompt-icon">🔒</text>
+            <text class="prompt-text">深度分析已用完试用次数</text>
+            <view class="prompt-btn" bindtap="goToVip">
+              <text>开通会员解锁 →</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 情商水平 -->
+      <view class="result-card dim-card" wx:if="{{result.eqLevel}}">
+        <view class="result-header">
+          <text class="result-emoji">💡</text>
+          <text class="result-title">情商水平</text>
+        </view>
+        <view class="dim-content">
+          <view class="dim-main">
+            <text class="dim-value">{{result.eqLevel}}</text>
+          </view>
+          <text class="dim-desc" wx:if="{{result.eqDesc}}">{{result.eqDesc}}</text>
+        </view>
+      </view>
+
+      <!-- SDT需求 -->
+      <view class="result-card dim-card" wx:if="{{result.sdtNeed}}">
+        <view class="result-header">
+          <text class="result-emoji">🎯</text>
+          <text class="result-title">SDT需求</text>
+        </view>
+        <view class="dim-content">
+          <view class="dim-main">
+            <text class="dim-value">{{result.sdtNeed}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 大五人格 -->
+      <view class="result-card dim-card" wx:if="{{result.bigFiveHint}}">
+        <view class="result-header">
+          <text class="result-emoji">🎭</text>
+          <text class="result-title">大五人格</text>
+        </view>
+        <view class="dim-content">
+          <view class="dim-tag-list">
+            <view class="dim-tag">{{result.bigFiveHint}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 学习风格 -->
+      <view class="result-card dim-card" wx:if="{{result.learningStyleHint}}">
+        <view class="result-header">
+          <text class="result-emoji">📚</text>
+          <text class="result-title">学习风格</text>
+        </view>
+        <view class="dim-content">
+          <view class="dim-tag-list">
+            <view class="dim-tag">{{result.learningStyleHint}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 认知偏差 -->
+      <view class="result-card dim-card" wx:if="{{result.cognitiveBias}}">
+        <view class="result-header">
+          <text class="result-emoji">⚡</text>
+          <text class="result-title">认知偏差</text>
+        </view>
+        <view class="dim-content">
+          <view class="dim-tag-list">
+            <view class="dim-tag">{{result.cognitiveBias}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 沟通建议 -->
+      <view class="result-card tips-card" wx:if="{{result.qingzhiTips && result.qingzhiTips.length > 0}}">
+        <view class="result-header">
+          <text class="result-emoji">📋</text>
+          <text class="result-title">沟通建议</text>
+        </view>
+        <view class="tips-list">
+          <view wx:for="{{result.qingzhiTips}}" wx:key="index" class="tip-item">
+            <text class="tip-num">{{index + 1}}</text>
+            <text class="tip-content">{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- MBTI指引 -->
+      <view class="result-card guide-card" wx:if="{{result.guide && result.guide.title}}">
+        <view class="guide-header">
+          <text class="guide-icon">{{result.guide.type === 'learning' ? '📚' : result.guide.type === 'teaching' ? '👨‍🏫' : '💼'}}</text>
+          <view class="guide-info">
+            <text class="guide-title">{{result.guide.title}}</text>
+            <text class="guide-subtitle">{{result.guide.style}}</text>
+          </view>
+        </view>
+        <view class="guide-content">
+          <view class="guide-section">
+            <text class="section-label">优势</text>
+            <view class="strength-list">
+              <view wx:for="{{result.guide.strengths}}" wx:key="index" class="strength-item">
+                <text class="strength-dot">•</text>
+                <text class="strength-text">{{item}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="guide-section">
+            <text class="section-label">建议</text>
+            <view class="suggestion-list">
+              <view wx:for="{{result.guide.suggestions}}" wx:key="index" class="suggestion-item">
+                <text class="sug-num">{{index + 1}}</text>
+                <text class="sug-text">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 预警提示 -->
+      <view class="warning-card" wx:if="{{result.warning}}">
+        <text class="warning-icon">⚠️</text>
+        <view class="warning-content">
+          <text class="warning-title">温馨提示</text>
+          <text class="warning-text">{{result.warning}}</text>
+        </view>
+      </view>
+
+      <!-- VIP专属：沟通雷区 -->
+      <view class="result-card vip-card" wx:if="{{result.warningZone && isVip}}">
+        <view class="result-header">
+          <text class="result-emoji">🚫</text>
+          <text class="result-title">沟通雷区</text>
+          <view class="vip-badge">
+            <text>会员专属</text>
+          </view>
+        </view>
+        <view class="vip-content">
+          <text class="vip-text">{{result.warningZone}}</text>
+        </view>
+      </view>
+
+      <!-- VIP专属：情绪触发点地图 -->
+      <view class="result-card vip-card" wx:if="{{result.emotionTriggers && isVip}}">
+        <view class="result-header">
+          <text class="result-emoji">🔥</text>
+          <text class="result-title">情绪触发点地图</text>
+          <view class="vip-badge">
+            <text>会员专属</text>
+          </view>
+        </view>
+        <view class="vip-content">
+          <text class="vip-text">{{result.emotionTriggers}}</text>
+        </view>
+      </view>
+
+      <!-- VIP专属：关系阶段判断 -->
+      <view class="result-card vip-card" wx:if="{{result.relationshipStage && isVip}}">
+        <view class="result-header">
+          <text class="result-emoji">📊</text>
+          <text class="result-title">关系阶段判断</text>
+          <view class="vip-badge">
+            <text>会员专属</text>
+          </view>
+        </view>
+        <view class="vip-content">
+          <text class="vip-text">{{result.relationshipStage}}</text>
+        </view>
+      </view>
+
+      <!-- VIP专属：心理学效应应用 -->
+      <view class="result-card vip-card" wx:if="{{result.psychologyEffects && isVip}}">
+        <view class="result-header">
+          <text class="result-emoji">🧠</text>
+          <text class="result-title">心理学效应应用</text>
+          <view class="vip-badge">
+            <text>会员专属</text>
+          </view>
+        </view>
+        <view class="vip-content">
+          <text class="vip-text">{{result.psychologyEffects}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 人员选择弹窗 -->
+  <view class="person-picker-modal" wx:if="{{showPersonPicker}}" bindtap="closePersonPicker">
+    <view class="picker-sheet" catchtap="">
+      <view class="sheet-handle"></view>
+      <view class="picker-header">
+        <text class="picker-title">选择分析对象</text>
+        <view class="close-btn" bindtap="closePersonPicker">×</view>
+      </view>
+      <scroll-view class="picker-body" scroll-y>
+        <view class="create-btn" bindtap="onCreatePerson">
+          <text class="btn-icon">+</text>
+          <text class="btn-text">新建分析对象</text>
+        </view>
+        <view class="random-btn" bindtap="onRandomAnalyze">
+          <text class="btn-icon">🎲</text>
+          <text class="btn-text">随机分析</text>
+        </view>
+        <view wx:if="{{persons.length === 0}}" class="empty-hint">
+          <text>暂无分析对象</text>
+        </view>
+        <view wx:for="{{persons}}" wx:key="index" class="person-item {{item.id === currentPersonId ? 'selected' : ''}}" bindtap="onPersonSelect" data-person="{{item}}">
+          <view class="avatar-sm {{item.gender === '女' ? 'female' : 'male'}}">
+            <text>{{item.name.charAt(0)}}</text>
+          </view>
+          <view class="person-info">
+            <text class="person-name">{{item.name}}</text>
+            <text class="person-meta">{{item.recipientType}} · {{item.gender}}</text>
+          </view>
+          <view class="person-type">
+            <text class="type-text">{{item.currentType}}</text>
+            <text class="confidence-text">{{item.confidence}}%</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

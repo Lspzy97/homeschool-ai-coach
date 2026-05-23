@@ -1,0 +1,405 @@
+/* ============================================
+   设置页 - 暗夜琉璃
+   ============================================ */
+
+.container {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  padding: var(--space-4);
+}
+
+/* ============================================
+   页面头部
+   ============================================ */
+
+.page-header {
+  text-align: center;
+  padding: var(--space-4) 0 var(--space-5);
+  position: relative;
+}
+
+.header-icon {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto var(--space-3);
+  background: linear-gradient(135deg, #6B7280 0%, #374151 100%);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  box-shadow: 0 8rpx 32rpx rgba(55, 65, 81, 0.3);
+}
+
+.page-title {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 6rpx;
+  letter-spacing: 2rpx;
+}
+
+.page-subtitle {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--neutral-500);
+}
+
+/* ============================================
+   分区卡片 - 暗色玻璃
+   ============================================ */
+
+.section-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  border: 1rpx solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.card-accent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+}
+
+.accent-blue {
+  background: linear-gradient(90deg, var(--primary-500), var(--info));
+}
+
+.accent-green {
+  background: linear-gradient(90deg, var(--secondary-500), #66BB6A);
+}
+
+.accent-purple {
+  background: linear-gradient(90deg, #9C27B0, #E91E63);
+}
+
+.accent-orange {
+  background: linear-gradient(90deg, #EC4899, #FFB74D);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.section-icon {
+  font-size: var(--font-size-xl);
+}
+
+.section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--neutral-800);
+}
+
+/* ============================================
+   输入配置区
+   ============================================ */
+
+.input-group {
+  margin-bottom: var(--space-4);
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.input-label {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.label-icon {
+  font-size: var(--font-size-base);
+}
+
+.label-text {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--neutral-600);
+}
+
+.config-input {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 var(--space-3);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--neutral-800);
+  transition: all var(--transition-fast);
+}
+
+.config-input:focus {
+  border-color: var(--primary-500);
+  background: rgba(102, 126, 234, 0.08);
+  box-shadow: 0 0 0 3rpx rgba(102, 126, 234, 0.15);
+}
+
+.config-input::placeholder {
+  color: var(--neutral-400);
+}
+
+.input-hint {
+  margin-top: var(--space-2);
+  background: rgba(236, 72, 153, 0.1);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  border: 1rpx solid rgba(236, 72, 153, 0.15);
+}
+
+.hint-text {
+  font-size: var(--font-size-xs);
+  color: #F472B6;
+  line-height: 1.5;
+}
+
+.ip-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.ip-value {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--primary-400);
+  letter-spacing: 1rpx;
+}
+
+.copy-btn {
+  background: linear-gradient(135deg, var(--primary-500), #764BA2);
+  padding: 12rpx 24rpx;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-text {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+/* ============================================
+   使用指南
+   ============================================ */
+
+.guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.guide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.guide-num {
+  width: 56rpx;
+  height: 56rpx;
+  background: linear-gradient(135deg, var(--primary-500), #764BA2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-glow);
+}
+
+.guide-content {
+  flex: 1;
+  padding-top: 8rpx;
+}
+
+.guide-title {
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin-bottom: 6rpx;
+}
+
+.guide-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--neutral-500);
+  line-height: 1.6;
+}
+
+/* ============================================
+   心理学维度列表
+   ============================================ */
+
+.dimension-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.dimension-item {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  border-left: 4rpx solid var(--neutral-400);
+  border: 1rpx solid rgba(255, 255, 255, 0.04);
+  border-left-width: 4rpx;
+}
+
+.dimension-item:nth-child(1) { border-left-color: #EC4899; }
+.dimension-item:nth-child(2) { border-left-color: var(--primary-500); }
+.dimension-item:nth-child(3) { border-left-color: var(--secondary-500); }
+.dimension-item:nth-child(4) { border-left-color: #9C27B0; }
+.dimension-item:nth-child(5) { border-left-color: #E91E63; }
+.dimension-item:nth-child(6) { border-left-color: var(--info); }
+.dimension-item:nth-child(7) { border-left-color: #F59E0B; }
+
+.dimension-header {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 8rpx;
+}
+
+.dimension-icon {
+  font-size: var(--font-size-base);
+}
+
+.dimension-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--neutral-700);
+}
+
+.dimension-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--neutral-500);
+  line-height: 1.6;
+  padding-left: 36rpx;
+}
+
+/* ============================================
+   关于区
+   ============================================ */
+
+.about-section {
+  text-align: center;
+}
+
+.app-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.app-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, var(--primary-500), #EC4899);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  box-shadow: var(--shadow-glow);
+}
+
+.app-detail {
+  text-align: left;
+}
+
+.app-name {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--neutral-800);
+  margin-bottom: 4rpx;
+}
+
+.app-version {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--neutral-500);
+}
+
+.about-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--neutral-500);
+  line-height: 1.6;
+}
+
+/* ============================================
+   法律链接
+   ============================================ */
+
+.legal-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20rpx;
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.link-item {
+  font-size: var(--font-size-sm);
+  color: var(--info);
+}
+
+.link-divider {
+  font-size: var(--font-size-sm);
+  color: var(--neutral-500);
+}
+
+/* ============================================
+   底部留白
+   ============================================ */
+
+.bottom-space {
+  height: var(--space-6);
+}

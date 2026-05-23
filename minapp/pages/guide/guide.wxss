@@ -1,0 +1,388 @@
+/* ============================================
+   情直理论介绍页 - 星际科幻设计
+   ============================================ */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0A0E27 0%, #1A1F4E 40%, #2D1B4E 80%, #1A1033 100%);
+  position: relative;
+  padding-bottom: 60rpx;
+}
+
+/* 顶部装饰光球 */
+.top-decoration {
+  position: relative;
+  height: 300rpx;
+}
+
+.decoration-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80rpx);
+  pointer-events: none;
+}
+
+.decoration-orb.orb-1 {
+  top: -80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500rpx;
+  height: 400rpx;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.5) 0%, transparent 70%);
+  animation: orbFloat 6s ease-in-out infinite;
+}
+
+.decoration-orb.orb-2 {
+  top: 50rpx;
+  right: -100rpx;
+  width: 300rpx;
+  height: 300rpx;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%);
+  animation: orbFloat 8s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30rpx) scale(1.1); }
+}
+
+/* 标题区域 */
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 32rpx 60rpx;
+  text-align: center;
+}
+
+.header-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+  animation: iconFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 10rpx 30rpx rgba(102, 126, 234, 0.4));
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0) rotateZ(0deg); }
+  50% { transform: translateY(-15rpx) rotateZ(5deg); }
+}
+
+.header-title {
+  font-size: 64rpx;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 8rpx;
+  text-shadow:
+    0 4rpx 20rpx rgba(102, 126, 234, 0.8),
+    0 8rpx 40rpx rgba(102, 126, 234, 0.5);
+  margin-bottom: 16rpx;
+}
+
+.header-subtitle {
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 4rpx;
+}
+
+/* 理论介绍卡片 */
+.theory-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border-radius: 36rpx;
+  padding: 40rpx;
+  margin: 0 32rpx 36rpx;
+  max-width: 686rpx;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 30rpx 100rpx rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.theory-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 36rpx;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 28rpx;
+}
+
+.card-icon {
+  font-size: 48rpx;
+  filter: drop-shadow(0 4rpx 12rpx rgba(0, 0, 0, 0.15));
+}
+
+.card-title {
+  font-size: 38rpx;
+  font-weight: 900;
+  color: var(--neutral-800);
+  letter-spacing: 3rpx;
+}
+
+.card-content {
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 28rpx;
+  padding: 32rpx;
+  border: 1rpx solid rgba(245, 158, 11, 0.15);
+}
+
+.content-text {
+  display: block;
+  font-size: 30rpx;
+  color: #FDE68A;
+  line-height: 2;
+  font-weight: 500;
+  white-space: pre-line;
+}
+
+/* 八种属性类型区域 */
+.types-section {
+  padding: 0 32rpx;
+  margin-bottom: 36rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 28rpx;
+  padding-left: 16rpx;
+}
+
+.section-icon {
+  font-size: 48rpx;
+  filter: drop-shadow(0 4rpx 12rpx rgba(0, 0, 0, 0.2));
+}
+
+.section-title {
+  font-size: 40rpx;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 4rpx;
+  text-shadow: 0 4rpx 20rpx rgba(102, 126, 234, 0.5);
+}
+
+.gender-group {
+  margin-bottom: 36rpx;
+}
+
+.gender-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.gender-icon {
+  font-size: 44rpx;
+}
+
+.gender-label {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 2rpx;
+}
+
+/* ============================================
+   八种属性头像墙
+   ============================================ */
+
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.type-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border-radius: 28rpx;
+  padding: 28rpx 20rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 16rpx 48rpx rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.type-card:active {
+  transform: scale(0.96);
+}
+
+.type-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  margin-bottom: 16rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.2);
+}
+
+.type-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.type-name {
+  font-size: 28rpx;
+  font-weight: 800;
+  letter-spacing: 2rpx;
+}
+
+.type-desc {
+  font-size: 24rpx;
+  color: var(--neutral-500);
+  line-height: 1.5;
+}
+
+/* 匹配原则区域 */
+.match-section {
+  padding: 0 32rpx;
+  margin-bottom: 36rpx;
+}
+
+.match-rules {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border-radius: 36rpx;
+  padding: 36rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 24rpx 80rpx rgba(0, 0, 0, 0.2);
+}
+
+.rule-item {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.rule-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rule-item:first-child {
+  padding-top: 0;
+}
+
+.rule-icon-wrap {
+  width: 72rpx;
+  height: 72rpx;
+  background: linear-gradient(145deg, #667EEA 0%, #764BA2 100%);
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10rpx 30rpx rgba(102, 126, 234, 0.4);
+  flex-shrink: 0;
+}
+
+.rule-icon {
+  font-size: 36rpx;
+}
+
+.rule-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.rule-title {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: var(--neutral-800);
+}
+
+.rule-desc {
+  font-size: 26rpx;
+  color: var(--neutral-500);
+  line-height: 1.5;
+}
+
+/* 底部提示 */
+.footer-tip {
+  text-align: center;
+  padding: 40rpx 32rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 3rpx;
+}
+
+/* 复制区域 */
+.copy-section {
+  padding: 24rpx 32rpx 48rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.copy-content {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border-radius: 24rpx;
+  padding: 28rpx 36rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 12rpx 40rpx rgba(0, 0, 0, 0.2);
+}
+
+.copy-label {
+  font-size: 26rpx;
+  color: #6B7280;
+  letter-spacing: 2rpx;
+}
+
+.copy-wechat-box {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  border-radius: 16rpx;
+  padding: 16rpx 28rpx;
+}
+
+.wechat-id {
+  font-size: 34rpx;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 3rpx;
+}
+
+.copy-icon {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
